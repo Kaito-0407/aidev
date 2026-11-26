@@ -19,10 +19,10 @@
 <div class="table-wrap"><table>
 <thead><tr><th>払い方</th><th>料金</th><th>上限</th></tr></thead>
 <tbody>
-<tr><td>定額プラン（claude.aiのアカウントでログイン）</td><td>プランの月額。Claude Codeの利用分は月額に含まれる</td><td>5時間ごと・1週間ごとの利用上限。チャットとClaude Codeで同じ枠を使う</td></tr>
+<tr><td>定額プラン（claude.aiのアカウントでログイン）</td><td>プランの月額。Claude Codeの利用分は月額に含まれる</td><td>5時間ごと・1週間ごとの利用上限あり</td></tr>
 <tr><td>APIの従量課金（Claude Console）</td><td>使ったトークン数 × <a href="claude-api-pricing">APIの単価</a></td><td>プランの利用上限はなし。ワークスペースごとに支出の上限を設定できる</td></tr>
 </tbody></table></div>
-<p>定額プランで上限に達したときは、リセットを待つか、上のプランに変えるか、有料プランなら「usage credits」をオンにしてAPIと同じ標準単価で使い続けられます。</p>
+<p>定額プランで上限に達したときは、リセットを待つか、上のプランに変えるか、有料プランなら「usage credits」を使って上限を超えても使い続けられます。</p>
 
 <h2>定額プランの料金（Claude Codeが使えるもの）</h2>
 <div class="table-wrap"><table>
@@ -35,7 +35,7 @@
 <tr><td>Team<br>スタンダード席</td><td class="num">$25<br>¥3,983</td><td>Proより多い</td></tr>
 <tr><td>Team<br>プレミアム席</td><td class="num">$125<br>¥19,915</td><td>スタンダード席の5倍</td></tr>
 </tbody></table></div>
-<p class="note">出典：<a href="https://claude.com/pricing" rel="noopener" target="_blank">Claude公式 Plans &amp; pricing</a>（2026-11-26確認）。月額は月払いの場合。年払いならProは月$17（¥2,708・$200前払い）、Teamはスタンダード席$20（¥3,186）・プレミアム席$100（¥15,932）です。Teamは1席あたりの料金で、2〜150人向け。Ultraは5時間ごとの上限がありません。Maxには毎月$100、Ultraには毎月$200のAPIクレジットが付きます。Enterpriseは1席$20/月（年払い・20席から）にAPI単価での利用料が加わります。</p>
+<p class="note">出典：<a href="https://claude.com/pricing" rel="noopener" target="_blank">Claude公式 Plans &amp; pricing</a>（2026-11-26確認）。月額は月払いの場合。年払いならProは月$17（¥2,708・$200前払い）、Teamはスタンダード席$20（¥3,186）・プレミアム席$100（¥15,932）です。Teamは1席あたりの料金で、2〜150人向け。Ultraは本人確認済みのアカウントなら5時間ごとの上限がありません。Maxには毎月$100、Ultraには毎月$200のAPIクレジットが付きます。Enterpriseは1席$20/月（年払い・20席から）にAPI単価での利用料が加わります。</p>
 
 <h2>APIの従量課金だといくらになる？</h2>
 <p>公式ドキュメントによると、企業での利用の平均は<strong>1人1日あたり約$13（約¥2,071）、1か月あたり$150〜250（約¥23,898〜¥39,830）</strong>で、90%の利用者は1日$30（約¥4,780）未満に収まっています。</p>
@@ -55,7 +55,7 @@
 <li><strong>CIや自動処理に組み込む</strong>：APIキーでの従量課金にし、Claude Consoleのワークスペースで支出の上限を設定します。</li>
 <li><strong>チーム</strong>：Teamプランは1席ごとの利用枠、Claude Console（API）はトークン単位でまとめて請求されます。</li>
 </ul>
-<p>なお、Claude Codeの <code>/usage</code> で表示される金額は、定額プランの利用者にとっては請求額ではありません（トークン数から定価で計算した目安です）。</p>
+<p>なお、Claude Codeの <code>/usage</code> で表示される金額は、Pro・Max・Ultraの利用者にとっては請求額ではありません（トークン数から定価で計算した目安です）。</p>
 
 <a class="cta" href="../">自分の使い方でAPIの月額を計算する（無料）</a>
 <p class="note">料金やプランの内容は変わることがあります。契約前に公式の料金ページでご確認ください。</p>
