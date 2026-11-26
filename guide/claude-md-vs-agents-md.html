@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLAUDE.mdとAGENTS.md・スキル・rulesの違い｜どれに何を書くか</title>
+<meta name="description" content="Claude CodeのCLAUDE.md、AGENTS.md、.claude/rules/、スキル、自動メモリの違いを公式ドキュメントに沿って整理。両方あるときにどちらが読まれるか、他のAIツールと1つのファイルを共有する方法、何をどこに書くかの目安まで。">
+<link rel="canonical" href="https://aidev.k-web-lab.com/guide/claude-md-vs-agents-md">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site"><p class="brand"><a href="../">AI開発ツール箱</a> ／ <a href="../claude-md">CLAUDE.md作成ツール</a> ／ <a href="claude-md">CLAUDE.mdの書き方</a></p></header>
+<main>
+<article class="article">
+<h1>CLAUDE.mdとAGENTS.md・スキル・rulesの違い｜どれに何を書くか</h1>
+<p class="lead">結論：毎回守ってほしいことはCLAUDE.md、一部のファイルだけの決まりは .claude/rules/、手順の長い作業はスキルに書きます。AGENTS.mdは、CLAUDE.mdが無いときにCLAUDE.mdの代わりに読まれます。</p>
+
+<h2>違いの一覧</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>種類</th><th>誰が書くか</th><th>いつ読まれるか</th><th>向いている内容</th></tr></thead>
+<tbody>
+<tr><td>CLAUDE.md</td><td>自分</td><td>毎回のセッション開始時</td><td>ビルドのコマンド、書き方の決まり、構成、「必ず〜する」ルール</td></tr>
+<tr><td>AGENTS.md</td><td>自分</td><td>CLAUDE.mdが無いとき、その代わりに</td><td>他のAIコーディングツールと共通の指示</td></tr>
+<tr><td>.claude/rules/</td><td>自分</td><td>毎回、または paths に合うファイルを扱うとき</td><td>テーマ別・ファイルの種類別の決まり</td></tr>
+<tr><td>スキル</td><td>自分</td><td>呼び出したとき、または関係があるとClaudeが判断したとき</td><td>手順の長い作業</td></tr>
+<tr><td>自動メモリ</td><td>Claude</td><td>自動メモリがオンのセッション（MEMORY.mdの先頭200行または25KBまで）</td><td>自分の好み、Claudeへの訂正</td></tr>
+</tbody></table></div>
+
+<h2>CLAUDE.mdとAGENTS.mdが両方あるとき</h2>
+<p>初期設定では、Claude CodeはCLAUDE.mdを優先します。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>リポジトリの状態</th><th>読まれるもの</th></tr></thead>
+<tbody>
+<tr><td>AGENTS.mdだけがある</td><td>AGENTS.md</td></tr>
+<tr><td>AGENTS.mdとCLAUDE.md（またはCLAUDE.local.md）がある</td><td>CLAUDE.mdだけ</td></tr>
+<tr><td>CLAUDE.mdの中で AGENTS.md を読み込んでいる</td><td>CLAUDE.mdと、読み込んだAGENTS.md</td></tr>
+</tbody></table></div>
+<p>注意点：</p>
+<ul>
+<li>CLAUDE.local.md もCLAUDE.mdとして数えられます。AGENTS.mdで運用しているプロジェクトに自分用のCLAUDE.local.mdを足すと、AGENTS.mdが読まれなくなります。</li>
+<li><code>~/.claude/CLAUDE.md</code> と <code>.claude/rules/</code> は数えられず、AGENTS.mdと一緒に読まれます。</li>
+<li>両方読ませたいときは、<code>/config</code> の Project instructions を <code>claude-md-and-agents-md</code> にします。</li>
+<li>AGENTS.mdを直接読むには Claude Code v2.1.277 以降が必要です。</li>
+</ul>
+
+<h2>他のAIツールと1つのファイルを共有する</h2>
+<p>AGENTS.mdを共通のファイルにして、CLAUDE.mdで読み込む方法が公式で紹介されています。Claude専用の指示はその下に書きます。</p>
+<pre>@AGENTS.md
+
+## Claude Code
+
+（Claudeだけに伝えたいこと）</pre>
+
+<h2>何をどこに書くかの目安</h2>
+<ul>
+<li>毎回必要な事実（コマンド、決まり、構成）：CLAUDE.md</li>
+<li>一部のフォルダやファイルの種類だけで使う決まり：<code>.claude/rules/</code>（paths を付ける）</li>
+<li>手順の長い作業：スキル（必要なときだけ読まれる）</li>
+<li>どうしても止めたい操作：フックを使う。公式ドキュメントでは、CLAUDE.mdは強制される設定ではなく、確実に止めたい操作にはPreToolUseフックを使うよう書かれています</li>
+</ul>
+
+<a class="cta" href="../claude-md">質問に答えて CLAUDE.md を作る（無料）</a>
+<p class="note">出典：<a href="https://code.claude.com/docs/en/memory" rel="noopener" target="_blank">Claude Code公式ドキュメント「memory」</a>（2026-11-26確認）。</p>
+<!-- note-links --><section class="note-links"><h2>筆者のnote（実務の記録）</h2><p class="note">このサイトの作者がnoteに書いている、実際の開発での記録です。</p><ul><li><a href="https://note.com/mtgc_kaito0407/n/n1ed2b4341110" rel="noopener" target="_blank">AIに実装させたら、レビューは別のモデルにやらせる。それでも最後の確認だけは自分でやる理由</a>（有料・500円）</li><li><a href="https://note.com/mtgc_kaito0407/n/n47b9711b419f" rel="noopener" target="_blank">AIを4層で使い分けたら、APIコストが体感で4分の1になった。個人開発の会話サービスの原価設計</a>（有料・500円）</li></ul></section><!-- /note-links -->
+</article>
+</main>
+<footer class="site"><p>© AI開発ツール箱</p></footer>
+</body>
+</html>

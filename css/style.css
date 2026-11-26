@@ -57,3 +57,5 @@ button.primary { background: var(--accent); color: #fff; border-color: var(--acc
   table { font-size: .85rem; }
   th, td { padding: 6px 4px; }
 }
+.note-links { margin-top: 28px; padding-top: 8px; border-top: 1px solid var(--line); }
+.note-links h2 { margin-top: 12px; }
