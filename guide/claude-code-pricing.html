@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude APIとClaude Codeの料金の違い｜定額プランと従量課金はどちらが得？</title>
+<meta name="description" content="Claude Codeは「定額プラン（Pro・Max・Ultra・Team）でログイン」と「APIキーで従量課金」の2通りで使えます。公式ページの料金をもとに、それぞれの払い方、月額の目安（日本円）、どちらを選ぶかの目安を整理しました。">
+<link rel="canonical" href="https://aidev.k-web-lab.com/guide/claude-code-pricing">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site"><p class="brand"><a href="../">AI開発ツール箱</a> ／ <a href="../">API料金計算機</a> ／ <a href="claude-api-pricing">Claude APIの料金の目安</a></p></header>
+<main>
+<article class="article">
+<h1>Claude APIとClaude Codeの料金の違い｜定額プランと従量課金はどちらが得？</h1>
+<p class="lead">結論：Claude Codeは、定額プラン（Pro 月$20〜）でログインして使うか、APIキーでトークン単位の従量課金で使うかを選べます。毎日しっかり使うなら定額プラン、たまに使う・自動処理に組み込むならAPIの従量課金が向いています（1ドル＝159.32円）。</p>
+
+<h2>2つの払い方</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>払い方</th><th>料金</th><th>上限</th></tr></thead>
+<tbody>
+<tr><td>定額プラン（claude.aiのアカウントでログイン）</td><td>プランの月額。Claude Codeの利用分は月額に含まれる</td><td>5時間ごと・1週間ごとの利用上限。チャットとClaude Codeで同じ枠を使う</td></tr>
+<tr><td>APIの従量課金（Claude Console）</td><td>使ったトークン数 × <a href="claude-api-pricing">APIの単価</a></td><td>プランの利用上限はなし。ワークスペースごとに支出の上限を設定できる</td></tr>
+</tbody></table></div>
+<p>定額プランで上限に達したときは、リセットを待つか、上のプランに変えるか、有料プランなら「usage credits」をオンにしてAPIと同じ標準単価で使い続けられます。</p>
+
+<h2>定額プランの料金（Claude Codeが使えるもの）</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>プラン</th><th class="num">月額</th><th>利用量の目安</th></tr></thead>
+<tbody>
+<tr><td>Free</td><td class="num">$0</td><td>Claude Codeは使えない</td></tr>
+<tr><td>Pro</td><td class="num">$20<br>¥3,186</td><td>Freeより多い</td></tr>
+<tr><td>Max</td><td class="num">$100<br>¥15,932</td><td>Proの5倍</td></tr>
+<tr><td>Ultra</td><td class="num">$200<br>¥31,864</td><td>週あたりProの10倍</td></tr>
+<tr><td>Team<br>スタンダード席</td><td class="num">$25<br>¥3,983</td><td>Proより多い</td></tr>
+<tr><td>Team<br>プレミアム席</td><td class="num">$125<br>¥19,915</td><td>スタンダード席の5倍</td></tr>
+</tbody></table></div>
+<p class="note">出典：<a href="https://claude.com/pricing" rel="noopener" target="_blank">Claude公式 Plans &amp; pricing</a>（2026-11-26確認）。月額は月払いの場合。年払いならProは月$17（¥2,708・$200前払い）、Teamはスタンダード席$20（¥3,186）・プレミアム席$100（¥15,932）です。Teamは1席あたりの料金で、2〜150人向け。Ultraは5時間ごとの上限がありません。Maxには毎月$100、Ultraには毎月$200のAPIクレジットが付きます。Enterpriseは1席$20/月（年払い・20席から）にAPI単価での利用料が加わります。</p>
+
+<h2>APIの従量課金だといくらになる？</h2>
+<p>公式ドキュメントによると、企業での利用の平均は<strong>1人1日あたり約$13（約¥2,071）、1か月あたり$150〜250（約¥23,898〜¥39,830）</strong>で、90%の利用者は1日$30（約¥4,780）未満に収まっています。</p>
+<p>計算機と同じ計算で、1回の入力5万トークン・出力1,500トークンを1日100回・月20日使った場合の例です。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>モデル</th><th class="num">キャッシュなし</th><th class="num">キャッシュ90%</th></tr></thead>
+<tbody>
+<tr><td>Sonnet 5.5</td><td class="num">$230<br>¥36,644</td><td class="num">$59<br>¥9,400</td></tr>
+<tr><td>Opus 5.5</td><td class="num">$460<br>¥73,287</td><td class="num">$118<br>¥18,800</td></tr>
+</tbody></table></div>
+<p class="note">「キャッシュ90%」は入力の90%がキャッシュ読み込みになる場合。キャッシュ書き込みの割増は含めていません。Claude Codeは会話の前半を繰り返し送るため、実際はキャッシュ読み込みの割合が高くなりやすいです。出典：<a href="https://code.claude.com/docs/en/costs" rel="noopener" target="_blank">Claude Code公式 Manage costs effectively</a>、<a href="https://platform.claude.com/docs/en/about-claude/pricing" rel="noopener" target="_blank">Anthropic公式 Pricing</a>（いずれも2026-11-26確認）。</p>
+
+<h2>どちらを選ぶかの目安</h2>
+<ul>
+<li><strong>毎日の開発で使う個人</strong>：まずPro（月$20）。上限に何度も当たるならMax・Ultraを検討します。月額が固定なので予算を立てやすいです。</li>
+<li><strong>週に数回だけ使う</strong>：APIの従量課金のほうが安く済むことがあります。月の利用額を<a href="../">料金計算機</a>で見積もり、Proの月額と比べてください。</li>
+<li><strong>CIや自動処理に組み込む</strong>：APIキーでの従量課金にし、Claude Consoleのワークスペースで支出の上限を設定します。</li>
+<li><strong>チーム</strong>：Teamプランは1席ごとの利用枠、Claude Console（API）はトークン単位でまとめて請求されます。</li>
+</ul>
+<p>なお、Claude Codeの <code>/usage</code> で表示される金額は、定額プランの利用者にとっては請求額ではありません（トークン数から定価で計算した目安です）。</p>
+
+<a class="cta" href="../">自分の使い方でAPIの月額を計算する（無料）</a>
+<p class="note">料金やプランの内容は変わることがあります。契約前に公式の料金ページでご確認ください。</p>
+</article>
+</main>
+<footer class="site"><p>© AI開発ツール箱</p></footer>
+</body>
+</html>

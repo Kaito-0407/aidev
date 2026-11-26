@@ -77,7 +77,7 @@ const overlaps = async (p, a, others) => {
 try {
   for (const [vn, vp] of [['PC', { width: 1470, height: 840 }], ['PC1024', { width: 1024, height: 768 }], ['SP', { width: 375, height: 800 }]]) {
     const ctx = await browser.newContext({ viewport: vp, deviceScaleFactor: 1 });
-    const pages = ['/', '/claude-md', '/guide/claude-api-pricing', '/guide/claude-md'];
+    const pages = ['/', '/claude-md', '/guide/claude-api-pricing', '/guide/claude-md', '/guide/claude-code-pricing'];
     for (const u of pages) {
       const p = await ctx.newPage(); const errs = [];
       p.on('pageerror', (e) => errs.push(e.message)); p.on('console', (m) => m.type() === 'error' && errs.push(m.text()));
